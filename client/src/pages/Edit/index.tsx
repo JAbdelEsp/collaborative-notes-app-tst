@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import type { EditProps, Note } from "../../types";
-import { BackButton, ConflictWarning, Container, Header, Info } from "./styles";
+import { BackButton, Container, Header, Info, Warning } from "./styles";
 import { useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill-new";
 import { SvgIcon } from "../../common/SvgIcon";
@@ -22,7 +22,7 @@ const Edit = ({ notes, onEdit, onDelete }: EditProps) => {
     const handleStorageChange = (e: StorageEvent) => {
       if (e.key === "notes") {
         const updatedNotes = JSON.parse(e.newValue || "[]");
-        const updatedNote = updatedNotes.find((n: Note) => n.id === id);
+        const updatedNote = updatedNotes.find((note: Note) => note.id === id);
         if (updatedNote && updatedNote.timestamp > lastSaved) {
           setConflict(true);
         }
@@ -80,11 +80,10 @@ const Edit = ({ notes, onEdit, onDelete }: EditProps) => {
         </BackButton>
       </Header>
       {conflict && (
-        <ConflictWarning>
-          ⚠️ Conflicting update detected. Another user has edited this note.
-          Please refresh to get the latest version or continue editing to
-          overwrite. ⚠️
-        </ConflictWarning>
+        <Warning>
+          Another user has edited this note. Please refresh to get the latest
+          version or continue editing to overwrite. ⚠️
+        </Warning>
       )}
       <ReactQuill value={content} onChange={handleChange} />
     </Container>

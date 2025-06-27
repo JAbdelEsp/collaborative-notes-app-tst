@@ -22,7 +22,7 @@ function App() {
     const newNote: Note = {
       id: uuidv4(),
       note: data.note,
-      user: "John",
+      user: data.user,
       timestamp: Date.now(),
     };
     setNotes((notes) => [...notes, newNote]);

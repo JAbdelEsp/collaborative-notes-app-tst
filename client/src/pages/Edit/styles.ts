@@ -31,8 +31,8 @@ export const Info = styled("div")`
   margin-bottom: 1rem;
 `;
 
-export const ConflictWarning = styled("div")`
-  background-color: #ffe0e0;
+export const Warning = styled("div")`
+  background-color: #fff;
   color: #a00;
   padding: 0.5rem;
   margin-bottom: 1rem;

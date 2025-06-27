@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import type { Note } from "../types";
 import { Styles } from "../styles/styles";
 import Edit from "../pages/Edit";
+import { LeaderBoardTable } from "../pages/LeaderBoard/styles";
+import LeaderBoard from "../pages/LeaderBoard";
 interface RouterProps {
   notes: Note[];
   fnHandleCreate: any;
@@ -47,6 +49,7 @@ const Router = ({
             />
           }
         />
+        <Route path="/leaderboard" element={<LeaderBoard notes={notes} />} />
       </Routes>
     </Suspense>
   );

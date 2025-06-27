@@ -38,3 +38,7 @@ export interface EditProps {
   onEdit: any;
   onDelete: any;
 }
+
+export interface LeaderBoardProps {
+  notes: Note[];
+}

@@ -6,13 +6,15 @@ import "react-quill-new/dist/quill.snow.css";
 import { useState } from "react";
 import Notes from "../../components/Notes";
 import { SvgIcon } from "../../common/SvgIcon";
+import { useNavigate } from "react-router-dom";
 interface FormValues {
   note: string;
   user: string;
   timestamp: string;
 }
 const Home = ({ notes, onCreate, onEdit, showModal, show }: HomeProps) => {
-  const { handleSubmit } = useForm<FormValues>();
+  const navigate = useNavigate();
+  const { register, handleSubmit } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     data.note = note;
     onCreate(data);
@@ -22,17 +24,27 @@ const Home = ({ notes, onCreate, onEdit, showModal, show }: HomeProps) => {
   return (
     <Container>
       <h1>Home</h1>
-      <Button onClick={showModal}>
+      <Button title="Create new" onClick={showModal}>
         <SvgIcon src="new-svgrepo-com.svg" />
+      </Button>
+      <Button
+        title="Go to leaderboard"
+        onClick={() => navigate("/leaderboard")}
+      >
+        <SvgIcon src="leaderboard-svgrepo-com.svg" />
       </Button>
       <Notes source={notes} edit={onEdit} />
       {show && (
         <ModalOverlay onClick={showModal}>
           <ModalContent onClick={(e: any) => e.stopPropagation()}>
-            <h4>Creating new note...</h4>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <label htmlFor="note">Note</label>
-              <ReactQuill theme="snow" value={note} onChange={setNote} />
+              <div>
+                <label htmlFor="user">User</label>
+                <input type="text" {...register("user")} />
+              </div>
+              <div>
+                <ReactQuill theme="snow" value={note} onChange={setNote} />
+              </div>
               <button className="sentButton" type="submit">
                 Save
               </button>

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled("div")``;
+export const Container = styled("div")`
+  .ql-toolbar {
+    border: 1px solid transparent;
+  }
+`;
 export const Button = styled("button")`
   margin-bottom: 10px;
   img {
