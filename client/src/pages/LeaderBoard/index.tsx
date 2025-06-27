@@ -1,10 +1,10 @@
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import type { LeaderBoardProps } from "../../types";
 import { BackButton, Container, LeaderBoardTable, Title } from "./styles";
 import { SvgIcon } from "../../common/SvgIcon";
 import { useNavigate } from "react-router-dom";
 
-const LeaderBoard = ({ notes }: LeaderBoardProps) => {
+const LeaderBoard = memo(({ notes }: LeaderBoardProps) => {
   const navigate = useNavigate();
   const rankings = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -42,6 +42,6 @@ const LeaderBoard = ({ notes }: LeaderBoardProps) => {
       </LeaderBoardTable>
     </Container>
   );
-};
+});
 
 export default LeaderBoard;

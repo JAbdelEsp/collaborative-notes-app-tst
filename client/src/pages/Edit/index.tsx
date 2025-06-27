@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
 import type { EditProps, Note } from "../../types";
 import { BackButton, Container, Header, Info, Warning } from "./styles";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill-new";
 import { SvgIcon } from "../../common/SvgIcon";
-const Edit = ({ notes, onEdit, onDelete }: EditProps) => {
+const Edit = memo(({ notes, onEdit, onDelete }: EditProps) => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
@@ -88,6 +88,6 @@ const Edit = ({ notes, onEdit, onDelete }: EditProps) => {
       <ReactQuill value={content} onChange={handleChange} />
     </Container>
   );
-};
+});
 
 export default Edit;

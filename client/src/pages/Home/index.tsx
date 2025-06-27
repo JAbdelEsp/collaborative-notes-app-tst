@@ -3,7 +3,7 @@ import type { HomeProps } from "../../types";
 import { Button, Container, ModalContent, ModalOverlay } from "./styles";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
-import { useState } from "react";
+import { memo, useState } from "react";
 import Notes from "../../components/Notes";
 import { SvgIcon } from "../../common/SvgIcon";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ interface FormValues {
   user: string;
   timestamp: string;
 }
-const Home = ({ notes, onCreate, onEdit, showModal, show }: HomeProps) => {
+const Home = memo(({ notes, onCreate, onEdit, showModal, show }: HomeProps) => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -54,6 +54,6 @@ const Home = ({ notes, onCreate, onEdit, showModal, show }: HomeProps) => {
       )}
     </Container>
   );
-};
+});
 
 export default Home;
