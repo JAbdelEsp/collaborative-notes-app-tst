@@ -38,13 +38,13 @@ A web application developed with **React + TypeScript** that allows you to colla
 
 ---
 
-## Instalación
+## Install
 
 1. Clone repository:
 
 ```bash
-git clone https://github.com/tu-usuario/collaborative-notes-app.git
-cd collaborative-notes-app
+git clone https://github.com/JAbdelEsp/collaborative-notes-app-tst
+cd collaborative-notes-app-tst
 ```
 
 2. Install dependencies:
@@ -58,6 +58,8 @@ npm install
 ```bash
 npm run dev
 ```
+
+open in browser http://localhost:5173
 
 4. How to test App
    Runing a basic test using jest and react-testing-library
